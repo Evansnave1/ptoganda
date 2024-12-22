@@ -1,10 +1,21 @@
-package services
+package service
 
 import (
     "log"
     "google.golang.org/api/calendar/v3"
 )
+type Schedule struct {
+    ID          string
+    StartTime   string
+    EndTime     string
+    Description string
+}
 
+type Event struct {
+    Title       string
+    Date        string
+    Location    string
+}
 type GoogleCalendarService struct {
     calendarClient *calendar.Service
 }

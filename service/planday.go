@@ -1,6 +1,14 @@
-package services
+package service
 
 import "log"
+func CreateSchedule() Schedule {
+    return Schedule{
+        ID:          "1",
+        StartTime:   "2024-12-22 09:00",
+        EndTime:     "2024-12-22 10:00",
+        Description: "Meeting with team",
+    }
+}
 
 type PlandayService struct {}
 

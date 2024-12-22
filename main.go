@@ -3,21 +3,20 @@ package main
 import (
 	"log"
 	"net/http"
-
-	"github.com/gin-gonic/gin"          // Framework for HTTP routing
-	"github.com/Evansnave1/ptoganda.git" // Replace with your actual module name
+      // Framework for HTTP routing
+	 "ptoganda/service" // Replace with your actual module name
 )
 
 // App struct holds references to services
 type App struct {
-	GoogleCalendarService *services.GoogleCalendarService
-	PlandayService        *services.PlandayService
+	GoogleCalendarService *service.GoogleCalendarService
+	PlandayService        *service.PlandayService
 }
 
 func main() {
 	// Initialize services
-	googleService := services.NewGoogleCalendarService(nil) // Pass Google API client here
-	plandayService := services.NewPlandayService()
+	googleService := service.NewGoogleCalendarService(nil) // Pass Google API client here
+	plandayService := service.NewPlandayService()
 
 	// Create the App instance
 	app := &App{
