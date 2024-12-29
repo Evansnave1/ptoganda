@@ -1,23 +1,40 @@
 package service
 
 import "log"
-func CreateSchedule() Schedule {
-    return Schedule{
-        ID:          "1",
-        StartTime:   "2024-12-22 09:00",
-        EndTime:     "2024-12-22 10:00",
-        Description: "Meeting with team",
-    }
+
+type Schedule struct {
+	ID          string
+	StartTime   string
+	EndTime     string
+	Description string
 }
 
-type PlandayService struct {}
+type PlandayService struct{}
 
 func NewPlandayService() *PlandayService {
-    return &PlandayService{}
+	return &PlandayService{}
 }
 
 func (s *PlandayService) FetchSchedules() ([]Schedule, error) {
-    // Example: Fetch schedules from Planday API
-    log.Println("Fetching schedules from Planday")
-    return []Schedule{}, nil
+	log.Println("Fetching schedules from Planday")
+	return []Schedule{
+		{
+			ID:          "1",
+			StartTime:   "2024-12-22T09:00:00",
+			EndTime:     "2024-12-22T10:00:00",
+			Description: "Team Meeting",
+		},
+	}, nil
+}
+
+func (s *PlandayService) GenerateICSFile() string {
+	events := []Event{
+		{
+			ID:    "1",
+			Title: "Team Meeting",
+			Start: "2024-12-22T09:00:00",
+			End:   "2024-12-22T10:00:00",
+		},
+	}
+	return GenerateICSFile(events)
 }
